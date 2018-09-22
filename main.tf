@@ -1,47 +1,56 @@
 variable name {
 	type = "string"
+	description = "The unique identifier used throughout the module to name and identify different resources."
 }
 
 variable lambda_package {
 	type = "string"
+	description = "A path to a zip file containing all the code needed for the lambda function. https://www.terraform.io/docs/providers/aws/r/lambda_function.html#filename"
 }
 
 variable lambda_package_hash {
 	type = "string"
+	description = "See https://www.terraform.io/docs/providers/aws/r/lambda_function.html#source_code_hash If you used the archive data resource for terraform, then the `output_base64sha256` attribute is a good choice for this input."
 }
 
 variable lambda_runtime {
 	type = "string"
+	description = "See https://www.terraform.io/docs/providers/aws/r/lambda_function.html#runtime"
 }
 
 variable lambda_handler {
 	type = "string"
+	description = "See https://www.terraform.io/docs/providers/aws/r/lambda_function.html#handler"
 }
 
 variable lambda_timeout {
 	default = 20
+	description = "See https://www.terraform.io/docs/providers/aws/r/lambda_function.html#timeout"
 }
 
 variable lambda_tags {
 	type = "map"
+	description = "See https://www.terraform.io/docs/providers/aws/r/lambda_function.html#tags"
 }
 
 variable lambda_role {
 	default = <<EOF
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Action": "sts:AssumeRole",
+			"Principal": {
+				"Service": "lambda.amazonaws.com"
+			},
+			"Effect": "Allow",
+			"Sid": ""
+		}
+	]
 }
 EOF
+
+	description = "The role definition the lambda function will execute under."
 }
 
 variable lambda_policy {
@@ -54,12 +63,16 @@ variable lambda_policy {
 				"logs:*"
 			],
 			"Effect": "Allow",
-			"Resource": "*" }
+			"Resource": "*"
+		}
 	]
 }
 EOF
+
+	description = "The policy document to attach to the role the lambda function will execute under."
 }
 
 variable deployment_path {
 	default = "test"
+	description = "See https://www.terraform.io/docs/providers/aws/r/api_gateway_deployment.html#stage_name"
 }
