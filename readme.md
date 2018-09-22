@@ -8,7 +8,7 @@ Usage
 
 The below example references a nodejs application that is zipped up.  Notice that the module expects the user to zip up the source so that it's sha256 has can be used to distinguish when the source code has changed.
 
-```terraform
+```HCL
 data "archive_file" "test_src" {
 	type        = "zip"
 	source_dir = "${path.module}/src/test"
