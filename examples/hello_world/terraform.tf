@@ -9,7 +9,8 @@ data "archive_file" "test_src" {
 }
 
 module "test_api" {
-	source = "git::https://github.com/mitchelldavis/api_gateway_website.git"
+	#source = "git::https://github.com/mitchelldavis/api_gateway_website.git"
+	source = "../../"
 	name = "awesome"
 	lambda_package = "${data.archive_file.test_src.output_path}"
 	lambda_package_hash = "${data.archive_file.test_src.output_base64sha256}"

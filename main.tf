@@ -30,7 +30,18 @@ variable lambda_timeout {
 
 variable lambda_tags {
 	type = "map"
+	default = {
+		source = "https://github.com/mitchelldavis/api_gateway_website"
+	}
 	description = "See https://www.terraform.io/docs/providers/aws/r/lambda_function.html#tags"
+}
+
+variable lambda_environment {
+	type = "map"
+	default = {
+		source = "https://github.com/mitchelldavis/api_gateway_website"
+	}
+	description = "See https://www.terraform.io/docs/providers/aws/r/lambda_function.html#environment"
 }
 
 variable lambda_role {

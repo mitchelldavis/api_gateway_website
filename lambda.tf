@@ -17,4 +17,7 @@ resource "aws_lambda_function" "lambda" {
 	handler = "${var.lambda_handler}"
 	source_code_hash = "${var.lambda_package_hash}"
 	timeout = "${var.lambda_timeout}"
+	environment {
+		variables = "${var.lambda_environment}"
+	}
 }
