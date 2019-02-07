@@ -3,6 +3,18 @@ variable name {
 	description = "The unique identifier used throughout the module to name and identify different resources."
 }
 
+variable gateway_policy {
+	type = "string"
+	default = ""
+	description = "JSON formatted policy document that controls access to the API Gateway. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide (https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html)"
+}
+
+variable gateway_endpoint_configuration_types {
+	type = "string"
+	default = "EDGE"
+	description = "Nested argument defining API endpoint configuration including endpoint type.  Values: EDGE (default), REGIONAL, PRIVATE"
+}
+
 variable lambda_package {
 	type = "string"
 	description = "A path to a zip file containing all the code needed for the lambda function. https://www.terraform.io/docs/providers/aws/r/lambda_function.html#filename"

@@ -1,6 +1,10 @@
 resource "aws_api_gateway_rest_api" "rest_api" {
 	name        = "${var.name}_rest_api"
 	description = "${var.name} Serverless Rest API"
+	policy 			= "${var.gateway_policy}"
+	endpoint_configuration {
+		types = ["${var.gateway_endpoint_configuration_types}"]
+	}
 }
 
 resource "aws_api_gateway_resource" "proxy" {
